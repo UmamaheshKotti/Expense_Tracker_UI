@@ -1,0 +1,9 @@
+{
+    "appEndPoints": {
+        "API_URL": "https://expense-tracker-backend-dpzv.onrender.com",
+        "USER_LOGIN": "https://expense-tracker-backend-dpzv.onrender.com/user/login",
+        "USER_REGISTRATION": "https://expense-tracker-backend-dpzv.onrender.com/user/register",
+        "ADD_EXPENSE": "https://expense-tracker-backend-dpzv.onrender.com/expense/add-expense",
+        "GET_EXPENSES_BY_USERID": "https://expense-tracker-backend-dpzv.onrender.com/expense/getexpenses"
+    }
+}

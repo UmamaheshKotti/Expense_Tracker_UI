@@ -2,10 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.RingLoader {
+  /* margin-left: 40%; */
+  align-self: center;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -14,25 +15,470 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; */
 }
 
-.App-link {
-  color: #61dafb;
+.defaultpage {
+  text-align: center;
+  border: solid 1px rgba(119, 99, 101, 0.537);
+  width: 50%;
+  margin-left: 20%;
+  align-content: center;
+  background-color: #b4b5b7;
+  border-radius: 10px;
 }
+
+.defaultpage h1 {
+  color: rgb(229, 55, 55);
+}
+
+.defaultpage p,
+h4 {
+  color: rgb(52, 53, 50);
+}
+
+.app-sidebar-maincontent {
+  display: flex;
+  position: static;
+}
+
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* navbar cls */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #36383c;
+  min-height: 100%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navbar h4 {
+  color: white;
+}
+
+.navbar h6 {
+  color: white;
+  margin-right: 5px;
+}
+
+.nav-login-register {
+  display: flex;
+}
+
+.nav-login-register h5 {
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+}
+
+/* sidebar */
+.sidebar {
+  background-color: #606673;
+  border: solid 1px rgb(237, 137, 137);
+  min-width: 15%;
+  min-height: 84.7vh;
+  color: white;
+  padding-top: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  width: 8rem;
+}
+
+.sidebar li {
+  font-size: larger;
+  cursor: pointer;
+  margin-bottom: 10%;
+}
+
+/* maincontent */
+.maincontent {
+  border: solid 1px rgb(237, 137, 137);
+  width: 100%;
+  background-color: rgb(201, 208, 208);
+  align-content: center;
+}
+
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(145, 138, 138);
+  border-radius: 10px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: aliceblue;
+  text-align: center;
+  height: auto;
+}
+
+.login-form h2 {
+  color: rgb(239, 84, 12);
+  text-decoration: underline;
+}
+
+.login-form button {
+  padding: 3px 15px 3px 15px;
+  background-color: rgb(116, 166, 149);
+  color: beige;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.userauth {
+  align-items: center;
+
+}
+
+.userauth input {
+  border: solid 1px black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  margin-top: 10px;
+}
+
+.userauth label {
+  color: rgb(76, 61, 38);
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.loginbutton {
+  margin-right: 10px;
+}
+
+
+/* registeration */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(145, 138, 138);
+  border-radius: 10px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: aliceblue;
+  text-align: center;
+  height: 80%;
+}
+
+.register-form h2 {
+  color: rgb(239, 84, 12);
+  text-decoration: underline;
+}
+
+.register-form button {
+  padding: 3px 15px 3px 15px;
+  background-color: rgb(116, 166, 149);
+  color: rgb(247, 247, 242);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+/* expense form */
+
+.addexpense-form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(145, 138, 138);
+  border-radius: 10px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: aliceblue;
+  text-align: center;
+  height: 80%;
+}
+
+.addexpense-form h2 {
+  color: rgb(239, 84, 12);
+  text-decoration: underline;
+}
+
+.addexpense-form button {
+  padding: 3px 15px 3px 15px;
+  background-color: rgb(116, 166, 149);
+  color: rgb(247, 247, 242);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+input[id="date"] {
+  width: 18%;
+  margin-right: 10px;
+}
+
+select[id="category"] {
+  padding: 10px;
+  width: 25%;
+  border-radius: 5px;
+}
+
+textarea[id="description"] {
+  border: solid 1px black;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  margin-top: 10px;
+}
+
+.addincome-form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(145, 138, 138);
+  border-radius: 10px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: aliceblue;
+  text-align: center;
+  height: 80%;
+}
+
+.addincome-form h2 {
+  color: rgb(239, 84, 12);
+  text-decoration: underline;
+}
+
+.addincome-form button {
+  padding: 3px 15px 3px 15px;
+  background-color: rgb(116, 166, 149);
+  color: rgb(247, 247, 242);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.allexpenses {
+  background-color: rgb(220, 225, 231);
+  height: 100%;
+  margin-top: auto;
+}
+
+.allexpenses h1 {
+  margin-top: auto;
+}
+
+/* .allexpenses-1 {
+  max-height: 50vh;
+} */
+
+.allexpenses-1 h2 {
+  margin-top: auto;
+  color: rgb(1, 1, 33)
+}
+
+.allexpenses-1 table {
+  width: 100%;
+  border: 1px solid grey;
+  background-color: #b4b5b7;
+  color: rgb(12, 12, 12);
+  /* height: 50vh; */
+}
+
+.allexpenses-1 th,
+tr,
+td {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.allincomes {
+  background-color: rgb(220, 225, 231);
+  height: 100%;
+  margin-top: auto;
+}
+
+.allincomes h1 {
+  margin-top: auto;
+}
+
+/* .allexpenses-1 {
+  max-height: 50vh;
+} */
+
+.allincomes-1 h2 {
+  margin-top: auto;
+  color: rgb(1, 1, 33)
+}
+
+.allincomes-1 table {
+  width: 100%;
+  border: 1px solid grey;
+  background-color: #b4b5b7;
+  color: rgb(12, 12, 12);
+  /* height: 50vh; */
+}
+
+.allincomes-1 th,
+tr,
+td {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.table-div {
+  min-height: 50vh;
+  background-color: #b4b5b7;
+}
+
+.totalexpense {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalexpense #total {
+  color: rgb(204, 23, 23);
+}
+
+.totalexpense #income {
+  color: green;
+}
+
+.totalexpense #balance {
+  color: #c59f07;
+}
+
+.totalincome {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalincome #balance {
+  color: rgb(204, 23, 23);
+}
+
+.totalincome #total {
+  color: green;
+}
+
+.editicon {
+  color: chocolate;
+  cursor: pointer;
+}
+
+.deleteicon {
+  color: maroon;
+  cursor: pointer;
+
+}
+
+.pagination {
+  display: flex;
+  justify-content: end;
+}
+
+.pagination-pages {
+  margin-top: auto;
+}
+
+.chevronleft {
+  cursor: pointer;
+}
+
+.chevronright {
+  cursor: pointer;
+}
+
+.chevronleftdisabled {
+  cursor: not-allowed;
+  color: lightslategray;
+}
+
+.chevronleftdisabled:hover {
+  background-color: transparent;
+}
+
+.chevronrightdisabled {
+  cursor: not-allowed;
+  color: lightslategray;
+}
+
+/* userdetails */
+.userdetails {
+  /* text-align: center; */
+  height: 100%;
+  margin-top: auto;
+  background-color: aliceblue;
+
+}
+
+.userdetails h3 {
+  margin-top: auto;
+}
+
+.userdetails-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userdetails-2 {
+  text-align: center;
+
+}
+
+.userdetails-2 button {
+  color: red;
+  border: 1px solid red;
+}
+
+.deleteaccount :hover {
+  /* color: #c59f07; */
+}
+
+
+
+.dashboard {
+  width: 100%;
+  background-color: white;
+  height: 100%;
+}
+
+.dashboard h3 {
+  margin-top: auto;
+}
+
+
+.edituser-form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(145, 138, 138);
+  border-radius: 10px;
+  margin-left: 25%;
+  width: 50%;
+  background-color: aliceblue;
+  text-align: center;
+  height: 60%;
+}
+
+.edituser-form h2 {
+  color: rgb(239, 84, 12);
+  text-decoration: underline;
+}
+
+.edituser-form button {
+  padding: 3px 15px 3px 15px;
+  background-color: rgb(116, 166, 149);
+  color: rgb(247, 247, 242);
+  margin-top: 10px;
+  cursor: pointer;
 }
