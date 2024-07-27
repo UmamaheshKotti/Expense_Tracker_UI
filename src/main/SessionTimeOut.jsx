@@ -33,8 +33,8 @@ const SessionTimeOut = ({ appstate, dispatch }) => {
         onAction,
         onActive,
 
-        promptBeforeIdle: 1000 * 60 * 5,
-        timeout: 1000 * 60 * 10,
+        promptBeforeIdle: 1000 * 60 * 0.5,
+        timeout: 1000 * 60 * 1,
 
         events: [
             "keydown",

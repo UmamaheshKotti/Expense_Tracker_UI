@@ -9,13 +9,16 @@ const App = () => {
 
   const appstate = useSelector((state) => state.appstate);
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
 
   return (
     // <Provider store={store}>
-      <div>
-        <SessionTimeOut appstate={appstate} dispatch={dispatch} />
-        <Home />
-      </div>
+    <div>
+      {
+        token != undefined && <SessionTimeOut appstate={appstate} dispatch={dispatch} />
+      }
+      <Home />
+    </div>
     // </Provider >
   )
 }
