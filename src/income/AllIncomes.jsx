@@ -16,7 +16,7 @@ export const getIncomes = async (appstate, dispatch) => {
         dispatch(setLoading(true))
         const response = await callGet(url);
         if (response.status === 200) {
-            console.log("incomes : ", JSON.stringify(response.data));
+            // console.log("incomes : ", JSON.stringify(response.data));
             await dispatch(storeIncomes(response.data))
             await dispatch(setLoading(false))
         }
@@ -60,7 +60,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
         }
     }, [currentPage, incomesList]);
 
-    console.log(currentIncomes)
+    // console.log(currentIncomes)
 
     const setPageNumber = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -73,7 +73,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
             ...incomes[i],
             date: transFormDate(income.date)
         }
-        console.log("selected income : ", JSON.stringify(newIncome))
+        // console.log("selected income : ", JSON.stringify(newIncome))
         await dispatch(setSelectedIncome(newIncome));
         dispatch(setProcess(P.EDIT_INCOME))
 
@@ -82,7 +82,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
 
     const handleDeleteIncome = async (e, i, income) => {
         const result = window.confirm("Are you sure!! want to Delete??")
-        console.log("index", i)
+        // console.log("index", i)
         e.preventDefault()
         const deleteIncomeUrl = `${appstate.appConfigs.appEndPoints.BACKEND_URL}/income/delete-income/${income._id}`;
         if (result) {
@@ -90,11 +90,11 @@ const AllIncomes = ({ appstate, dispatch }) => {
             try {
                 const response = await callDelete(deleteIncomeUrl);
                 if (response.status === 200) {
-                    console.log(JSON.stringify(response.data))
+                    // console.log(JSON.stringify(response.data))
                     alert("Income Deleted Successfully");
                     getIncomes();
                 } else {
-                    console.log(response)
+                    // console.log(response)
                     alert("Something Wrong")
                 }
 

@@ -38,7 +38,7 @@ const ChangePassword = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPost(userRegisterUrl, request);
             if (response.status === 200) {
-                console.log(response.data.message)
+                // console.log(response.data.message)
                 alert(response.data.message);
                 dispatch(setProcess(P.USER_LOGIN))
             } else if (response.response.status === 500) {

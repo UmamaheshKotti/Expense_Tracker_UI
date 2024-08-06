@@ -25,7 +25,7 @@ const EditIncome = ({ appstate, dispatch }) => {
         setAmount(e.target.value)
     }
     const handleDate = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setDate(e.target.value)
     }
     const handleCategory = (e) => {
@@ -55,7 +55,7 @@ const EditIncome = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPut(editIncomeUrl, request);
             if (response.status === 200) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert("Income Updated Successfully");
                 setIncomeTitle("");
                 setAmount("");
@@ -65,7 +65,7 @@ const EditIncome = ({ appstate, dispatch }) => {
                 dispatch(setProcess(P.ALL_INCOMES))
             } else {
                 alert("Bad Request")
-                console.log(response)
+                // console.log(response)
             }
             dispatch(setLoading(false))
 

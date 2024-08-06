@@ -8,7 +8,7 @@ const SessionTimeOut = ({ appstate, dispatch }) => {
 
     function clearAllStores() {
         alert("Session Timed out")
-        console.log("we are in clear all stores")
+        // console.log("we are in clear all stores")
         localStorage.clear();
         dispatch(setProcess(""))
 

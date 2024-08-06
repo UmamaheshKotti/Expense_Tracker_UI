@@ -15,7 +15,7 @@ export const getUserDetails = async (appstate, dispatch) => {
         const response = await callGet(userDetailsUrl);
         if (response.status === 200) {
             dispatch(setUserDetails(response.data));
-            console.log("userDetails ", JSON.stringify(response.data))
+            // console.log("userDetails ", JSON.stringify(response.data))
             // dispatch(setProcess(P));
         }
         dispatch(setLoading(false));
@@ -47,13 +47,13 @@ const UserDetails = ({ appstate, dispatch }) => {
             try {
                 const response = await callDelete(deleteUserUrl);
                 if (response.status === 200) {
-                    console.log(JSON.stringify(response.data))
+                    // console.log(JSON.stringify(response.data))
                     alert("Account Deleted Successfully");
                     dispatch(resetState())
                     localStorage.clear()
                     dispatch(setProcess(""))
                 } else {
-                    console.log(response)
+                    // console.log(response)
                     alert("Something Wrong")
                 }
 

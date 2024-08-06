@@ -14,13 +14,13 @@ const GetConfigs = ({ appstate, dispatch }) => {
     const getEndPoints = async () => {
 
         const url = `${process.env.REACT_APP_BACKEND_URL}/endpoints/get-configs`;
-        console.log(url)
+        // console.log(url)
 
         try {
             setLoading(true);
             const response = await callGet(url)
             if (response.status === 200) {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
                 dispatch(setAppConfigs(response.data));
                 if(token) {
                     dispatch(setProcess(P.DASH_BOARD));
@@ -32,7 +32,7 @@ const GetConfigs = ({ appstate, dispatch }) => {
             }
             setLoading(false);
         } catch (error) {
-            console.log("Error while calling Configs : " , error);
+            // console.log("Error while calling Configs : " , error);
             return
         }
     }

@@ -55,7 +55,7 @@ const AddExpense = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPost(addExpenseUrl, request);
             if (response.status === 200) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert("Expense Added Successfully");
                 setExpenseTitle("");
                 setAmount("");
@@ -65,13 +65,13 @@ const AddExpense = ({ appstate, dispatch }) => {
                 dispatch(setProcess(P.ALL_EXPENSES))
             } else {
                 alert("Please Logout and Login again to continue")
-                console.log(response)
+                // console.log(response)
             }
             dispatch(setLoading(false))
 
 
         } catch (error) {
-            console.log("error while adding expense", error);
+            // console.log("error while adding expense", error);
             return error
         }
     }

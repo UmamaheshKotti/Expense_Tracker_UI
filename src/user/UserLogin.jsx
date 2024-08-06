@@ -38,12 +38,12 @@ const UserLogin = ({ appstate, dispatch }) => {
             const response = await callPost(loginUrl, request);
             if (response.status === 200) {
                 let token = response.data.token;
-                console.log(JSON.stringify(response.data))
+                // console.log(JSON.stringify(response.data))
                 dispatch(setUserToken(token));
                 localStorage.setItem("token", token);
                 if (token) {
                     const userId = jwtDecode(token);
-                    console.log(userId)
+                    // console.log(userId)
                     localStorage.setItem("userId", userId.userId)
                 }
                 alert(response.data.message)

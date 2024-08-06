@@ -55,7 +55,7 @@ const AddIncome = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPost(addIncomeUrl, request);
             if (response.status === 200) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert("Income Added Successfully");
                 setIncomeTitle("");
                 setAmount("");
@@ -65,7 +65,7 @@ const AddIncome = ({ appstate, dispatch }) => {
                 dispatch(setProcess(P.ALL_INCOMES))
             } else {
                 alert("Bad Request")
-                console.log(response)
+                // console.log(response)
             }
             dispatch(setLoading(false))
 

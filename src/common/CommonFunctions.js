@@ -7,7 +7,7 @@ export const convertUserName = (userName) => {
 }
 
 export const transFormDate = (date) => {
-    console.log(date.substring(0,10))
+    // console.log(date.substring(0,10))
 
     let newDate = date != undefined && new Date(date);
     let transFormedDate;

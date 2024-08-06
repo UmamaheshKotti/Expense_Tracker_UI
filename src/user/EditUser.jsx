@@ -44,7 +44,7 @@ const EditUser = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPut(userEditUrl, request);
             if (response.status === 200) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert(response.data.message);
                 dispatch(setProcess(P.USER_DETAILS))
             } else if (response.response.status === 404) {

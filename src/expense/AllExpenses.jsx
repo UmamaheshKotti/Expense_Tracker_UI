@@ -16,7 +16,7 @@ export const getExpenses = async (appstate, dispatch) => {
         dispatch(setLoading(true))
         const response = await callGet(url);
         if (response.status === 200) {
-            console.log("expenses : ", JSON.stringify(response.data));
+            // console.log("expenses : ", JSON.stringify(response.data));
             await dispatch(storeExpenses(response.data))
             await dispatch(setLoading(false))
         }
@@ -60,7 +60,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
         }
     }, [currentPage, expensesList]);
 
-    console.log(currentExpenses)
+    // console.log(currentExpenses)
 
     const setPageNumber = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -73,7 +73,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
             ...expenses[i],
             date: transFormDate(expense.date)
         }
-        console.log("selected expense : ", JSON.stringify(newExpense))
+        // console.log("selected expense : ", JSON.stringify(newExpense))
         await dispatch(setSelectedExpense(newExpense));
         dispatch(setProcess(P.EDIT_EXPENSE))
 
@@ -82,7 +82,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
 
     const handleDeleteExpense = async (e, i, expense) => {
         const result = window.confirm("Are you sure!! want to Delete??")
-        console.log("index", i)
+        // console.log("index", i)
         e.preventDefault()
         const deleteExpenseUrl = `${appstate.appConfigs.appEndPoints.BACKEND_URL}/expense/delete-expense/${expense._id}`;
         if (result) {
@@ -90,11 +90,11 @@ const AllExpenses = ({ appstate, dispatch }) => {
             try {
                 const response = await callDelete(deleteExpenseUrl);
                 if (response.status === 200) {
-                    console.log(JSON.stringify(response.data))
+                    // console.log(JSON.stringify(response.data))
                     alert("Expense Deleted Successfully");
                     getExpenses(appstate, dispatch);
                 } else {
-                    console.log(response)
+                    // console.log(response)
                     alert("Something Wrong")
                 }
 

@@ -25,7 +25,7 @@ const EditExpense = ({ appstate, dispatch }) => {
         setAmount(e.target.value)
     }
     const handleDate = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setDate(e.target.value)
     }
     const handleCategory = (e) => {
@@ -55,7 +55,7 @@ const EditExpense = ({ appstate, dispatch }) => {
             dispatch(setLoading(true))
             const response = await callPut(editExpenseUrl, request);
             if (response.status === 200) {
-                console.log(response.data)
+                // console.log(response.data)
                 alert("Expense Updated Successfully");
                 setExpenseTitle("");
                 setAmount("");
@@ -65,7 +65,7 @@ const EditExpense = ({ appstate, dispatch }) => {
                 dispatch(setProcess(P.ALL_EXPENSES))
             } else {
                 alert("Bad Request")
-                console.log(response)
+                // console.log(response)
             }
             dispatch(setLoading(false))
 

@@ -40,7 +40,7 @@ const DashBoard = ({ appstate, dispatch }) => {
         // })
 
         // console.log("Updated incomes amount " + JSON.stringify(incomeTotals))
-        console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
+        // console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
     }
 
     const formatedExpenseData = () => {
@@ -51,7 +51,7 @@ const DashBoard = ({ appstate, dispatch }) => {
         }));
         setExpensesData(formatedExpenseDate)
 
-        console.log("formatted expenses ", JSON.stringify(formatedExpenseDate))
+        // console.log("formatted expenses ", JSON.stringify(formatedExpenseDate))
     }
 
     // const totalData = expensesData.map(expense => ({
@@ -106,8 +106,8 @@ const DashBoard = ({ appstate, dispatch }) => {
     const monthlyExpenses = expensesData.length > 0 && aggregateDataByMonth(expensesData, undefined);
     const monthlyIncomes = incomesData.length > 0 && aggregateDataByMonth(undefined, incomesData);
 
-    console.log("aggregatedData of expenses " + JSON.stringify(monthlyExpenses));
-    console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
+    // console.log("aggregatedData of expenses " + JSON.stringify(monthlyExpenses));
+    // console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
 
     useMemo(() => {
         if (Object.keys(appstate.expenses).length <= 0) {
