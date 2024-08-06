@@ -4,6 +4,7 @@ import { getExpenses } from '../expense/AllExpenses';
 import { getIncomes } from '../income/AllIncomes';
 import { format } from 'date-fns';
 import { Tooltip } from '@mui/material';
+import { getUserDetails } from '../user/UserDetails';
 
 const DashBoard = ({ appstate, dispatch }) => {
     let expenses = appstate?.expenses?.expenses;
@@ -115,6 +116,7 @@ const DashBoard = ({ appstate, dispatch }) => {
         if (Object.keys(appstate.incomes).length <= 0) {
             getIncomes(appstate, dispatch);
         }
+        getUserDetails(appstate, dispatch)
         formatedIncomeData();
         formatedExpenseData();
     }, [expenses, incomes]);
@@ -220,10 +222,10 @@ const DashBoard = ({ appstate, dispatch }) => {
                     <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
                     <Bar type="monotone" dataKey="income" fill="green" />
                 </BarChart> */}
-                                {/* <PieChart width={500} height={400}>
-                    <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
-                    <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="green" label />
-                </PieChart> */}
+                                <PieChart width={500} height={400}>
+                                    <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
+                                    <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="green" label />
+                                </PieChart>
                             </div>
                             {/* <div>
                 <PieChart width={400} height={400}>

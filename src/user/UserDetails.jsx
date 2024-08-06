@@ -6,31 +6,33 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Button } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+export const getUserDetails = async (appstate, dispatch) => {
+    let userId = localStorage.getItem("userId")
+    let userDetailsUrl = `${appstate.appConfigs.appEndPoints.BACKEND_URL}/user/getuser/${userId}`
+
+    try {
+        dispatch(setLoading(true));
+        const response = await callGet(userDetailsUrl);
+        if (response.status === 200) {
+            dispatch(setUserDetails(response.data));
+            console.log("userDetails ", JSON.stringify(response.data))
+            // dispatch(setProcess(P));
+        }
+        dispatch(setLoading(false));
+
+    } catch (error) {
+        console.log("error while getting the userDetails", error)
+    }
+}
+
 const UserDetails = ({ appstate, dispatch }) => {
 
     let userDetails = appstate.userDetails;
 
-    const getUserDetails = async () => {
-        let userId = localStorage.getItem("userId")
-        let userDetailsUrl = `${appstate.appConfigs.appEndPoints.BACKEND_URL}/user/getuser/${userId}`
 
-        try {
-            dispatch(setLoading(true));
-            const response = await callGet(userDetailsUrl);
-            if (response.status === 200) {
-                dispatch(setUserDetails(response.data));
-                console.log("userDetails ", JSON.stringify(response.data))
-                // dispatch(setProcess(P));
-            }
-            dispatch(setLoading(false));
-
-        } catch (error) {
-            console.log("error while getting the userDetails", error)
-        }
-    }
 
     useEffect(() => {
-        getUserDetails();
+        getUserDetails(appstate, dispatch);
     }, [])
 
     const handleEditUser = () => {
@@ -73,7 +75,7 @@ const UserDetails = ({ appstate, dispatch }) => {
                         </div>
                         <div className="userdetails-2" >
                             <div className="usericon">
-                                <AccountCircleIcon sx={{fontSize:100}} />
+                                <AccountCircleIcon sx={{ fontSize: 100 }} />
                                 <EditIcon className="editicon" onClick={() => handleEditUser()} />
                             </div>
                             <p>

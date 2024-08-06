@@ -63,7 +63,7 @@ const SideBar = ({ appstate, dispatch, token }) => {
                         <li onClick={() => goToAllExpenses()}>All Expenses</li>
                         <li onClick={(e) => gotToAddIncome(e)}>Add Income</li>
                         <li onClick={(e) => goToAllIncomes(e)}>All Incomes</li>
-                        <li onClick={(e) => goToUserDetails(e)}>My Details</li>
+                        <li className="mydetails" onClick={(e) => goToUserDetails(e)}>My Details</li>
                     </>
                 }
             </ul>

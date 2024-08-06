@@ -38,7 +38,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
 
     let incomesList = appstate?.incomes?.incomes;
 
-    
+
 
     useEffect(() => {
         getIncomes(appstate, dispatch);
@@ -110,10 +110,10 @@ const AllIncomes = ({ appstate, dispatch }) => {
         <div className="allincomes">
             {
                 appstate.incomes.incomes != undefined && appstate.incomes.incomes.length === 0 ? (
-                    <>
+                    <div className='noincome' >
                         <h1>Welcome </h1>
                         <h1>Add your Incomes </h1>
-                    </>
+                    </div>
                 ) :
                     (
                         <>

@@ -110,10 +110,10 @@ const AllExpenses = ({ appstate, dispatch }) => {
         <div className="allexpenses">
             {
                 appstate.expenses.expenses != undefined && appstate.expenses.expenses.length === 0 ? (
-                    <>
+                    <div className='noincome' >
                         <h1>Welcome </h1>
                         <h1>Add your Expenses </h1>
-                    </>
+                    </div>
                 ) :
                     (
                         <>
