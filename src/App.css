@@ -451,6 +451,7 @@ td {
   width: 100%;
   background-color: white;
   height: 100%;
+  /* display: flex; */
 }
 
 .dashboard h3 {
@@ -482,3 +483,45 @@ td {
   margin-top: 10px;
   cursor: pointer;
 }
+
+.responsivecontainer{
+  display: flex;
+}
+
+.showamount{
+  display: flex;
+  border: 2px solid grey;
+  background-color: antiquewhite;
+  /* justify-content: space-between;
+  max-width: 100%; */
+}
+
+/* .showamount h4 {
+  margin-right: auto;
+} */
+h4[id="expense"] {
+  color: red;
+  margin-right: auto;
+
+}
+h4[id="income"] {
+  color: green;
+  margin-right: auto;
+
+}
+h4[id="savings"] {
+  color: color-mix(in srgb, red 70%, green 50%);
+  margin-right: 10rem;
+}
+
+/* .recharts-surface {
+  width: 150%;
+} */
+/* 
+.recharts-wrapper-incomebar {
+  width: 150%;
+} */
+
+/* .expensebar {
+  width: 150%;
+} */

@@ -64,7 +64,7 @@ const AddExpense = ({ appstate, dispatch }) => {
                 setDescription("");
                 dispatch(setProcess(P.ALL_EXPENSES))
             } else {
-                alert("Bad Request")
+                alert("Please Logout and Login again to continue")
                 console.log(response)
             }
             dispatch(setLoading(false))

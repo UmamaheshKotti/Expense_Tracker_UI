@@ -3,6 +3,10 @@ import '../App.css';
 import { getUserDetails, setLoading, setProcess } from "../store/AppActions";
 import P from '../store/ProcessConstants'
 import { callGet } from "../api/Api";
+import { TfiDashboard } from "react-icons/tfi";
+import { GiExpense } from "react-icons/gi";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+
 
 const SideBar = ({ appstate, dispatch, token }) => {
 
@@ -54,12 +58,12 @@ const SideBar = ({ appstate, dispatch, token }) => {
                 {
                     token &&
                     <>
-                        <li onClick={() => goToDashBoard()}>DashBoard</li>
+                        <li onClick={() => goToDashBoard()}><TfiDashboard color="red" /> DashBoard</li>
                         <li onClick={() => goToAddExpense()}>Add Expense</li>
                         <li onClick={() => goToAllExpenses()}>All Expenses</li>
                         <li onClick={(e) => gotToAddIncome(e)}>Add Income</li>
                         <li onClick={(e) => goToAllIncomes(e)}>All Incomes</li>
-                        <li onClick={(e) => goToUserDetails(e)}>User Details</li>
+                        <li onClick={(e) => goToUserDetails(e)}>My Details</li>
                     </>
                 }
             </ul>

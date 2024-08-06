@@ -1,10 +1,27 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIdleTimer } from 'react-idle-timer';
 import { resetState, setProcess } from '../store/AppActions';
 import P from "../store/ProcessConstants";
 
 const SessionTimeOut = ({ appstate, dispatch }) => {
+
+    function clearAllStores() {
+        alert("Session Timed out")
+        console.log("we are in clear all stores")
+        localStorage.clear();
+        dispatch(setProcess(""))
+
+    }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (clearAllStores) clearAllStores();
+
+        }, 3600000); //after 1hr clearing the store and local storage
+
+        return () => clearTimeout(timer)
+    }, [clearAllStores])
 
     const [dialogOpen, setDialogOpen] = useState(false);
     const [isSessionTimeOut, setIsSessionTimeOut] = useState(false);

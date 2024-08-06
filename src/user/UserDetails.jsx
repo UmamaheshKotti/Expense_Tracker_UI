@@ -72,10 +72,10 @@ const UserDetails = ({ appstate, dispatch }) => {
                         </div>
                         <div className="userdetails-2" >
                             <p>
-                                UserName: {userDetails.userName}
+                                <b>UserName: </b>{userDetails.userName}
                             </p>
                             <p>
-                                Email: {userDetails.email}
+                                <b>Email: </b> {userDetails.email}
                             </p>
                             <br /><br />
                             <Button className="deleteaccount" onClick={() => handleDeleteUser()} >Delete Account</Button>
