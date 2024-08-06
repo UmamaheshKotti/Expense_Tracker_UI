@@ -11,6 +11,7 @@ const DashBoard = ({ appstate, dispatch }) => {
     let userDetails = appstate.userDetails;
     const [incomesData, setIncomesData] = useState([])
     const [expensesData, setExpensesData] = useState([]);
+    const [totalData, setTotalData] = useState([]);
 
     let totaExpense = appstate.expenses.totalAmount;
     let totlaIncome = appstate.incomes.totalAmount;
@@ -153,41 +154,61 @@ const DashBoard = ({ appstate, dispatch }) => {
 
     return (
         <div className='dashboard' >
-            <h3>
-                Hi {appstate.expenses.userName}
-            </h3>
-            <div className='showamount' >
-                <h4 id="expense" >
-                    Total Expense : ₹{totaExpense?.toFixed(2)}
-                </h4>
-                <h4 id='income' >
-                    Total Income : ₹{totlaIncome?.toFixed(2)}
-                </h4>
-                <h4 id='savings' >
-                    Total Savings : ₹{totalSavings?.toFixed(2)}
-                </h4>
-            </div>
-            {/* <ResponsiveContainer className={"responsivecontainer"} width="50%" height="80%"> */}
-            <div className={"responsivecontainer"}>
-                <BarChart
+            {
+                (expenses?.length > 0 || incomes?.length > 0) ?
+                    (
+                        <div>
+                            <h3>
+                                Hi {appstate.expenses.userName}
+                            </h3>
+                            <div className='showamount' >
+                                <h4 id="expense" >
+                                    Total Expense : ₹{totaExpense?.toFixed(2)}
+                                </h4>
+                                <h4 id='income' >
+                                    Total Income : ₹{totlaIncome?.toFixed(2)}
+                                </h4>
+                                <h4 id='savings' >
+                                    Total Savings : ₹{totalSavings?.toFixed(2)}
+                                </h4>
+                            </div>
+                            {/* <ResponsiveContainer className={"responsivecontainer"} width="50%" height="80%"> */}
+                            <div className={"responsivecontainer"}>
+                                <BarChart
+                                    width={400}
+                                    height={300}
+                                    data={monthlyExpenses}
+                                    margin={{
+                                        top: 5, right: 80, left: 20, bottom: 10,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="month" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend content={renderCustomLegend(monthlyExpenses, undefined)} />
+                                    <Bar markerHeight={10} dataKey="expense" fill="red" />
+                                </BarChart>
+                                <BarChart
+                                    width={400}
+                                    height={300}
+                                    data={monthlyIncomes}
+                                    margin={{
+                                        top: 20, right: 80, left: 20, bottom: 5,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="month" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
+                                    <Bar type="monotone" dataKey="income" fill="green" />
+                                </BarChart>
+
+                                {/* <BarChart
                     width={400}
                     height={300}
-                    data={monthlyExpenses}
-                    margin={{
-                        top: 5, right: 80, left: 20, bottom: 10,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend content={renderCustomLegend(monthlyExpenses, undefined)} />
-                    <Bar markerHeight={10} dataKey="expense" fill="red" />
-                </BarChart>
-                <BarChart
-                    width={400}
-                    height={300}
-                    data={monthlyIncomes}
+                    data={}
                     margin={{
                         top: 20, right: 80, left: 20, bottom: 5,
                     }}
@@ -198,21 +219,21 @@ const DashBoard = ({ appstate, dispatch }) => {
                     <Tooltip />
                     <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
                     <Bar type="monotone" dataKey="income" fill="green" />
-                </BarChart>
-                <PieChart width={500} height={400}>
+                </BarChart> */}
+                                {/* <PieChart width={500} height={400}>
                     <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
                     <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="green" label />
-                </PieChart>
-            </div>
-            {/* <div>
+                </PieChart> */}
+                            </div>
+                            {/* <div>
                 <PieChart width={400} height={400}>
                     <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
                     <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
                 </PieChart>
             </div> */}
 
-            {/* </ResponsiveContainer> */}
-            {/* <div>
+                            {/* </ResponsiveContainer> */}
+                            {/* <div>
                 <ResponsiveContainer width="70%" height="50%">
                     <PieChart width={400} height={400}>
                         <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
@@ -220,6 +241,17 @@ const DashBoard = ({ appstate, dispatch }) => {
                     </PieChart>
                 </ResponsiveContainer>
             </div> */}
+                        </div>
+                    ) :
+                    (
+                        <div className='noincome' >
+                            <h2>Welcome  {userDetails.userName}</h2>
+                            <h3>Please Add your expenses and Incomes </h3>
+                            <h3>To Compare</h3>
+                        </div>
+                    )
+            }
+
 
         </div>
     )

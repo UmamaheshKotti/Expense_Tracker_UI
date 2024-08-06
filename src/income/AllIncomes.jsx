@@ -137,7 +137,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
                                                 <th>Delete</th>
                                             </tr>
                                             {
-                                                currentIncomes != undefined && currentIncomes.map((income, i) => {
+                                                currentIncomes != undefined && [...currentIncomes].reverse().map((income, i) => {
 
                                                     return (
                                                         <tr key={i}>

@@ -374,6 +374,7 @@ td {
 .editicon {
   color: chocolate;
   cursor: pointer;
+  margin-left: -10px;
 }
 
 .deleteicon {
@@ -484,11 +485,11 @@ td {
   cursor: pointer;
 }
 
-.responsivecontainer{
+.responsivecontainer {
   display: flex;
 }
 
-.showamount{
+.showamount {
   display: flex;
   border: 2px solid grey;
   background-color: antiquewhite;
@@ -504,11 +505,13 @@ h4[id="expense"] {
   margin-right: auto;
 
 }
+
 h4[id="income"] {
   color: green;
   margin-right: auto;
 
 }
+
 h4[id="savings"] {
   color: color-mix(in srgb, red 70%, green 50%);
   margin-right: 10rem;
@@ -525,3 +528,10 @@ h4[id="savings"] {
 /* .expensebar {
   width: 150%;
 } */
+.noincome {
+  margin-top: auto;
+  text-align-last: center;
+  /* border: 1px solid black; */
+  min-height: 35rem;
+  align-content: space-evenly;
+}

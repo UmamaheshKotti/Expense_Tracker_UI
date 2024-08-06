@@ -13,20 +13,7 @@ const App = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
 
-  function clearAllStores () {
-    console.log("we are in clear all stores")
-    localStorage.clear();
-    dispatch(setProcess(""))
-
-  }
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      clearAllStores();
-    },1000 * 60 * 0.5);
-
-    return clearTimeout(timer)
-  },[clearAllStores])
+  
 
   return (
     // <Provider store={store}>

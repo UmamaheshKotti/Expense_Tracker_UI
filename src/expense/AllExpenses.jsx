@@ -9,7 +9,7 @@ import P from "../store/ProcessConstants"
 import { Paginaton } from "./Pagination";
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 
-export const getExpenses = async ( appstate, dispatch ) => {
+export const getExpenses = async (appstate, dispatch) => {
     const userId = localStorage.getItem("userId");
     let url = `${appstate.appConfigs.appEndPoints.BACKEND_URL}/expense/getexpenses/${userId}`;
     try {
@@ -121,8 +121,8 @@ const AllExpenses = ({ appstate, dispatch }) => {
                                 <h2>Welcome {userName} </h2>
                                 <div className="totalexpense">
                                     <h2 id="total">Total Expense : {appstate?.expenses?.totalAmount}</h2>
-                                    <h2 id="income">Total Income : {appstate?.incomes?.totalAmount}</h2>
-                                    <h2 id="balance">Total Balance: {appstate?.incomes?.totalAmount - appstate?.expenses?.totalAmount}</h2>
+                                    {/* <h2 id="income">Total Income : {appstate?.incomes?.totalAmount}</h2>
+                                    <h2 id="balance">Total Balance: {appstate?.incomes?.totalAmount - appstate?.expenses?.totalAmount}</h2> */}
                                 </div>
                                 <div className="table-div" >
                                     <table>
@@ -138,7 +138,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
                                                 <th>Delete</th>
                                             </tr>
                                             {
-                                                currentExpenses != undefined && currentExpenses.map((expense, i) => {
+                                                currentExpenses != undefined && [...currentExpenses].reverse().map((expense, i) => {
 
                                                     return (
                                                         <tr key={i}>

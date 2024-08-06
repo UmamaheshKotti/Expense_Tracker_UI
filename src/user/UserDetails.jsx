@@ -4,6 +4,7 @@ import { callDelete, callGet } from "../api/Api";
 import P from '../store/ProcessConstants';
 import EditIcon from '@mui/icons-material/Edit';
 import { Button } from "@mui/material";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const UserDetails = ({ appstate, dispatch }) => {
 
@@ -68,9 +69,13 @@ const UserDetails = ({ appstate, dispatch }) => {
                     <div >
                         <div className="userdetails-1">
                             <h3>Welcome {userDetails.userName}</h3>
-                            <p className="editicon" ><EditIcon onClick={() => handleEditUser()} /></p>
+                            {/* <p className="editicon" ><EditIcon onClick={() => handleEditUser()} /></p> */}
                         </div>
                         <div className="userdetails-2" >
+                            <div className="usericon">
+                                <AccountCircleIcon sx={{fontSize:100}} />
+                                <EditIcon className="editicon" onClick={() => handleEditUser()} />
+                            </div>
                             <p>
                                 <b>UserName: </b>{userDetails.userName}
                             </p>
