@@ -12,12 +12,12 @@ const DashBoard = ({ appstate, dispatch }) => {
     let userDetails = appstate.userDetails;
     const [incomesData, setIncomesData] = useState([])
     const [expensesData, setExpensesData] = useState([]);
-    const [totalData, setTotalData] = useState([]);
+    // const [totalData, setTotalData] = useState([]);
 
     let totaExpense = appstate.expenses.totalAmount;
     let totlaIncome = appstate.incomes.totalAmount;
     let totalSavings = appstate.incomes.totalAmount - appstate.expenses.totalAmount;
-    // let newIncomesList = {};
+    let combinedData = [];
 
     const formatedIncomeData = async () => {
 
@@ -29,6 +29,12 @@ const DashBoard = ({ appstate, dispatch }) => {
 
         setIncomesData(formatedIncomeDate);
 
+        // combinedData = 
+
+
+
+
+        // console.log("combined List :: ", JSON.stringify(combinedData))
         // const incomeTotals = incomesData.length > 0 && incomesData?.reduce((acc, income) => {
         //     const { date, amount } = income;
         //     console.log(JSON.stringify(income));
@@ -40,7 +46,7 @@ const DashBoard = ({ appstate, dispatch }) => {
         // })
 
         // console.log("Updated incomes amount " + JSON.stringify(incomeTotals))
-        // console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
+        console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
     }
 
     const formatedExpenseData = () => {
@@ -103,8 +109,8 @@ const DashBoard = ({ appstate, dispatch }) => {
 
     }
 
-    const monthlyExpenses = expensesData.length > 0 && aggregateDataByMonth(expensesData, undefined);
-    const monthlyIncomes = incomesData.length > 0 && aggregateDataByMonth(undefined, incomesData);
+    let monthlyExpenses = expensesData.length > 0 && aggregateDataByMonth(expensesData, undefined);
+    let monthlyIncomes = incomesData.length > 0 && aggregateDataByMonth(undefined, incomesData);
 
     // console.log("aggregatedData of expenses " + JSON.stringify(monthlyExpenses));
     // console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
@@ -120,6 +126,75 @@ const DashBoard = ({ appstate, dispatch }) => {
         formatedIncomeData();
         formatedExpenseData();
     }, [expenses, incomes]);
+
+    const combineIncomesAndExpenses = () => {
+        let extractIncomes = [];
+        let extractExpenses = [];
+
+        extractIncomes = monthlyIncomes.map((income, i) => {
+            return {
+                date: income.month,
+                incomeAmount: income.income
+            }
+        })
+
+        console.log("extractIncomes data :: ", JSON.stringify(extractIncomes))
+
+        extractExpenses = monthlyExpenses.map((expense, i) => {
+            return {
+                date: expense.month,
+                expenseAmount: expense.expense
+            }
+
+            // for (let j = 0; j < extractIncomes.length; j++) {
+            // console.log(extractIncomes[i]?.date)
+            //     if (extractIncomes[i]?.date === expense.date) {
+            //         return {
+            //             incomeAmount: expense.amount
+            //         }
+            //     }
+            // }
+        })
+
+        console.log("extractExpenses data :: ", JSON.stringify(extractExpenses))
+
+        let newData = [...extractIncomes, ...extractExpenses]
+
+        console.log("newData ::" + JSON.stringify(newData))
+
+        combinedData = newData.reduce((acc, current) => {
+            // Check if the current date already exists in the accumulator
+            const existing = acc.find(item => item.date === current.date);
+
+            if (existing) {
+                // Update expenseAmount if it exists
+                if (current.expenseAmount !== undefined) {
+                    existing.expenseAmount += current.expenseAmount;
+                }
+                // Update incomeAmount if it exists
+                if (current.incomeAmount !== undefined) {
+                    existing.incomeAmount += current.incomeAmount;
+                }
+            } else {
+                // Push a new entry into the accumulator with both expenseAmount and incomeAmount
+                acc.push({
+                    date: current.date,
+                    expenseAmount: current.expenseAmount || 0,
+                    incomeAmount: current.incomeAmount || 0
+                });
+            }
+
+            return acc;
+        }, []);
+
+        console.log("combined data :: ", JSON.stringify(combinedData))
+    }
+
+    useMemo(() => {
+        if (incomesData.length > 0 && expensesData.length > 0) {
+            combineIncomesAndExpenses();
+        }
+    }, [expensesData, incomesData, combinedData])
 
     const renderCustomLegend = (expense, income) => {
         if (expense != undefined) {
@@ -207,25 +282,26 @@ const DashBoard = ({ appstate, dispatch }) => {
                                     <Bar type="monotone" dataKey="income" fill="green" />
                                 </BarChart>
 
-                                {/* <BarChart
-                    width={400}
-                    height={300}
-                    data={}
-                    margin={{
-                        top: 20, right: 80, left: 20, bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
-                    <Bar type="monotone" dataKey="income" fill="green" />
-                </BarChart> */}
-                                <PieChart width={500} height={400}>
+                                <BarChart
+                                    width={400}
+                                    height={300}
+                                    data={combinedData}
+                                    margin={{
+                                        top: 20, right: 80, left: 20, bottom: 5,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="date" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar markerHeight={10} dataKey="expenseAmount" activeBar={<Rectangle fill="pink" stroke="blue" />} fill="red" />
+                                    <Bar type="monotone" dataKey="incomeAmount" fill="green" />
+                                </BarChart>
+                                {/* <PieChart width={500} height={400}>
                                     <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
                                     <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="green" label />
-                                </PieChart>
+                                </PieChart> */}
                             </div>
                             {/* <div>
                 <PieChart width={400} height={400}>

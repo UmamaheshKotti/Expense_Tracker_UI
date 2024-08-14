@@ -62,7 +62,8 @@ const AddExpense = ({ appstate, dispatch }) => {
                 setDate("");
                 setCategory("");
                 setDescription("");
-                dispatch(setProcess(P.ALL_EXPENSES))
+                // dispatch(setProcess(P.ALL_EXPENSES))
+                dispatch(setProcess(P.DASH_BOARD))
             } else {
                 alert("Please Logout and Login again to continue")
                 // console.log(response)

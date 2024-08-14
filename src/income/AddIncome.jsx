@@ -62,7 +62,8 @@ const AddIncome = ({ appstate, dispatch }) => {
                 setDate("");
                 setCategory("");
                 setDescription("");
-                dispatch(setProcess(P.ALL_INCOMES))
+                dispatch(setProcess(P.DASH_BOARD))
+                // dispatch(setProcess(P.ALL_INCOMES))
             } else {
                 alert("Bad Request")
                 // console.log(response)

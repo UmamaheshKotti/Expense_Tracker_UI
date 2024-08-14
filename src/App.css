@@ -487,6 +487,7 @@ td {
 
 .responsivecontainer {
   display: flex;
+  margin-top: 20px;
 }
 
 .showamount {

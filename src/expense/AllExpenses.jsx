@@ -36,7 +36,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
     const indexOfFirstExpense = indexOfLastExpense - expensePerPage;
 
 
-    let expensesList = appstate?.expenses?.expenses;
+    let expensesList = appstate?.expenses?.expenses.reverse();
 
 
 
@@ -67,15 +67,16 @@ const AllExpenses = ({ appstate, dispatch }) => {
     }
 
     const handleEditExpense = async (e, i, expense) => {
-        let expenses = appstate?.expenses?.expenses;
+        
+        // let expenses = appstate?.expenses?.expenses.reverse();
         e.preventDefault();
         let newExpense = {
-            ...expenses[i],
+            ...expensesList[i],
             date: transFormDate(expense.date)
         }
-        // console.log("selected expense : ", JSON.stringify(newExpense))
+        console.log("selected expense : ", JSON.stringify(newExpense))
         await dispatch(setSelectedExpense(newExpense));
-        dispatch(setProcess(P.EDIT_EXPENSE))
+        await dispatch(setProcess(P.EDIT_EXPENSE))
 
 
     }
@@ -138,7 +139,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
                                                 <th>Delete</th>
                                             </tr>
                                             {
-                                                currentExpenses != undefined && [...currentExpenses].reverse().map((expense, i) => {
+                                                currentExpenses != undefined && currentExpenses?.map((expense, i) => {
 
                                                     return (
                                                         <tr key={i}>
@@ -158,7 +159,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
                                                                 {transFormDate(expense.date)}
                                                             </td>
                                                             <td>
-                                                                {expense.description}
+                                                                {expense.description == "" ? "No Information" : expense.description}
                                                             </td>
                                                             <td>
                                                                 <EditTwoToneIcon className="editicon" id="editicon" onClick={(e) => handleEditExpense(e, i, expense)} />
