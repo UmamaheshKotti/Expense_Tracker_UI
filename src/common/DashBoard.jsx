@@ -120,10 +120,10 @@ const DashBoard = ({ appstate, dispatch }) => {
     // console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
 
     useMemo(() => {
-        if (Object.keys(appstate.expenses).length <= 0) {
+        if (Object.keys(appstate.expenses).length == 0) {
             getExpenses(appstate, dispatch);
         }
-        if (Object.keys(appstate.incomes).length <= 0) {
+        if (Object.keys(appstate.incomes).length == 0) {
             getIncomes(appstate, dispatch);
         }
         getUserDetails(appstate, dispatch)
@@ -262,53 +262,58 @@ const DashBoard = ({ appstate, dispatch }) => {
                             </div>
                             {/* <ResponsiveContainer className={"responsivecontainer"} width="50%" height="80%"> */}
                             <div className={"responsivecontainer"}>
-                                <BarChart
-                                    width={400}
-                                    height={300}
-                                    data={monthlyExpenses}
-                                    margin={{
-                                        top: 5, right: 80, left: 20, bottom: 10,
-                                    }}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="month" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend content={renderCustomLegend(monthlyExpenses, undefined)} />
-                                    <Bar markerHeight={10} dataKey="expense" fill="red" />
-                                </BarChart>
-                                <BarChart
-                                    width={400}
-                                    height={300}
-                                    data={monthlyIncomes}
-                                    margin={{
-                                        top: 20, right: 80, left: 20, bottom: 5,
-                                    }}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="month" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
-                                    <Bar type="monotone" dataKey="income" fill="green" />
-                                </BarChart>
-
-                                <BarChart
-                                    width={400}
-                                    height={300}
-                                    data={combinedData}
-                                    margin={{
-                                        top: 20, right: 80, left: 20, bottom: 5,
-                                    }}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="date" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <Bar  dataKey="expenseAmount" fill="red" />
-                                    <Bar type="monotone" dataKey="incomeAmount" fill="green" />
-                                </BarChart>
+                                {
+                                    monthlyExpenses.length > 0 && <BarChart
+                                        width={400}
+                                        height={300}
+                                        data={monthlyExpenses}
+                                        margin={{
+                                            top: 5, right: 80, left: 20, bottom: 10,
+                                        }}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis dataKey="month" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend content={renderCustomLegend(monthlyExpenses, undefined)} />
+                                        <Bar markerHeight={10} dataKey="expense" fill="red" />
+                                    </BarChart>
+                                }
+                                {
+                                    monthlyIncomes.length > 0 && <BarChart
+                                        width={400}
+                                        height={300}
+                                        data={monthlyIncomes}
+                                        margin={{
+                                            top: 20, right: 80, left: 20, bottom: 5,
+                                        }}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis dataKey="month" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend content={renderCustomLegend(undefined, monthlyIncomes)} />
+                                        <Bar type="monotone" dataKey="income" fill="green" />
+                                    </BarChart>
+                                }
+                                {
+                                     monthlyExpenses.length > 0 && monthlyIncomes.length > 0 && <BarChart
+                                        width={400}
+                                        height={300}
+                                        data={combinedData}
+                                        margin={{
+                                            top: 20, right: 80, left: 20, bottom: 5,
+                                        }}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis dataKey="date" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend />
+                                        <Bar dataKey="expenseAmount" fill="red" />
+                                        <Bar type="monotone" dataKey="incomeAmount" fill="green" />
+                                    </BarChart>
+                                }
                                 {/* <PieChart width={500} height={400}>
                                     <Pie data={monthlyExpenses} dataKey="expense" cx="50%" cy="50%" outerRadius={60} fill="red" />
                                     <Pie data={monthlyIncomes} dataKey="income" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="green" label />
