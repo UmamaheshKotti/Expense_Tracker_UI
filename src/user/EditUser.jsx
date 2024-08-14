@@ -6,11 +6,12 @@ import P from '../store/ProcessConstants'
 
 const EditUser = ({ appstate, dispatch }) => {
 
-    const [userName, setUserName] = useState(String);
-    const [email, setEmail] = useState(String);
+    let userDetails = appstate.userDetails;
+
+    const [userName, setUserName] = useState(userDetails.userName);
+    const [email, setEmail] = useState(userDetails.email);
     const [password, setPassword] = useState(String);
     // const [confirmPassword, setConfirmPassword] = useState(String);
-    let userDetails = appstate.userDetails;
 
 
     const handleUsername = (e) => {

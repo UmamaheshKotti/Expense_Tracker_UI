@@ -3,8 +3,10 @@ import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, Pie, PieChart, R
 import { getExpenses } from '../expense/AllExpenses';
 import { getIncomes } from '../income/AllIncomes';
 import { format } from 'date-fns';
-import { Tooltip } from '@mui/material';
+import { Button, Tooltip } from '@mui/material';
 import { getUserDetails } from '../user/UserDetails';
+import P from '../store/ProcessConstants'
+import { setProcess } from '../store/AppActions';
 
 const DashBoard = ({ appstate, dispatch }) => {
     let expenses = appstate?.expenses?.expenses;
@@ -46,7 +48,7 @@ const DashBoard = ({ appstate, dispatch }) => {
         // })
 
         // console.log("Updated incomes amount " + JSON.stringify(incomeTotals))
-        console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
+        // console.log("formatted incomes ", JSON.stringify(formatedIncomeDate))
     }
 
     const formatedExpenseData = () => {
@@ -82,6 +84,8 @@ const DashBoard = ({ appstate, dispatch }) => {
                     result[month] = item.amount;
                 }
             });
+
+            console.log(result)
 
             return Object.keys(result).map(month => ({
                 month,
@@ -138,7 +142,7 @@ const DashBoard = ({ appstate, dispatch }) => {
             }
         })
 
-        console.log("extractIncomes data :: ", JSON.stringify(extractIncomes))
+        // console.log("extractIncomes data :: ", JSON.stringify(extractIncomes))
 
         extractExpenses = monthlyExpenses.map((expense, i) => {
             return {
@@ -156,11 +160,11 @@ const DashBoard = ({ appstate, dispatch }) => {
             // }
         })
 
-        console.log("extractExpenses data :: ", JSON.stringify(extractExpenses))
+        // console.log("extractExpenses data :: ", JSON.stringify(extractExpenses))
 
         let newData = [...extractIncomes, ...extractExpenses]
 
-        console.log("newData ::" + JSON.stringify(newData))
+        // console.log("newData ::" + JSON.stringify(newData))
 
         combinedData = newData.reduce((acc, current) => {
             // Check if the current date already exists in the accumulator
@@ -187,7 +191,7 @@ const DashBoard = ({ appstate, dispatch }) => {
             return acc;
         }, []);
 
-        console.log("combined data :: ", JSON.stringify(combinedData))
+        // console.log("combined data :: ", JSON.stringify(combinedData))
     }
 
     useMemo(() => {
@@ -228,6 +232,13 @@ const DashBoard = ({ appstate, dispatch }) => {
             );
         }
     };
+
+    const goToAddExpense = () => {
+        dispatch(setProcess(P.ADD_EXPENSE));
+    }
+    const goToAddIncome = () => {
+        dispatch(setProcess(P.ADD_INCOME));
+    }
 
     return (
         <div className='dashboard' >
@@ -295,7 +306,7 @@ const DashBoard = ({ appstate, dispatch }) => {
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Bar markerHeight={10} dataKey="expenseAmount" activeBar={<Rectangle fill="pink" stroke="blue" />} fill="red" />
+                                    <Bar  dataKey="expenseAmount" fill="red" />
                                     <Bar type="monotone" dataKey="incomeAmount" fill="green" />
                                 </BarChart>
                                 {/* <PieChart width={500} height={400}>
@@ -325,7 +336,11 @@ const DashBoard = ({ appstate, dispatch }) => {
                         <div className='noincome' >
                             <h2>Welcome  {userDetails.userName}</h2>
                             <h3>Please Add your expenses and Incomes </h3>
-                            <h3>To Compare</h3>
+                            <h3>To Compare.</h3>
+                            <div className='dashboardButtons'>
+                                <Button id='incomebutton' onClick={() => goToAddIncome()} >Add Income</Button>
+                                <Button id='expensebutton' onClick={() => goToAddExpense()} >Add Expense</Button>
+                            </div>
                         </div>
                     )
             }

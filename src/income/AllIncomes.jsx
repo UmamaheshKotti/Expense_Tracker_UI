@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { callDelete, callGet } from "../api/Api";
 import { setLoading, setProcess, setSelectedIncome, storeIncomes } from "../store/AppActions";
 import { convertUserName, transFormDate } from "../common/CommonFunctions";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import P from "../store/ProcessConstants";
@@ -105,6 +105,9 @@ const AllIncomes = ({ appstate, dispatch }) => {
         }
     }
 
+    const goToAddIncome = () => {
+        dispatch(setProcess(P.ADD_INCOME));
+    }
 
     return (
         <div className="allincomes">
@@ -112,7 +115,10 @@ const AllIncomes = ({ appstate, dispatch }) => {
                 appstate.incomes.incomes != undefined && appstate.incomes.incomes.length === 0 ? (
                     <div className='noincome' >
                         <h1>Welcome </h1>
-                        <h1>Add your Incomes </h1>
+                        <h2>Please Click on Add Income to add your income.</h2>
+                        <div>
+                            <Button id='incomebutton' onClick={() => goToAddIncome()} >Add Income</Button>
+                        </div>
                     </div>
                 ) :
                     (

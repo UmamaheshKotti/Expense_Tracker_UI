@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { callDelete, callGet } from "../api/Api";
 import { setLoading, setProcess, setSelectedExpense, storeExpenses } from "../store/AppActions";
 import { convertUserName, transFormDate } from "../common/CommonFunctions";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import P from "../store/ProcessConstants"
@@ -67,7 +67,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
     }
 
     const handleEditExpense = async (e, i, expense) => {
-        
+
         // let expenses = appstate?.expenses?.expenses.reverse();
         e.preventDefault();
         let newExpense = {
@@ -106,6 +106,10 @@ const AllExpenses = ({ appstate, dispatch }) => {
         }
     }
 
+    const goToAddExpense = () => {
+        dispatch(setProcess(P.ADD_EXPENSE));
+    }
+
 
     return (
         <div className="allexpenses">
@@ -113,7 +117,10 @@ const AllExpenses = ({ appstate, dispatch }) => {
                 appstate.expenses.expenses != undefined && appstate.expenses.expenses.length === 0 ? (
                     <div className='noincome' >
                         <h1>Welcome </h1>
-                        <h1>Add your Expenses </h1>
+                        <h2>Please Click on Add Expense to add your expenses</h2>
+                        <div>
+                            <Button id='expensebutton' onClick={() => goToAddExpense()} >Add Expense</Button>
+                        </div>
                     </div>
                 ) :
                     (

@@ -535,6 +535,27 @@ h4[id="savings"] {
   /* border: 1px solid black; */
   min-height: 35rem;
   align-content: space-evenly;
+  min-height: 20rem;
+}
+
+button[id="incomebutton"] {
+  border: 1px solid lightblue;
+  background-color: green;
+  border: 1px solid green;
+  color: black;
+  margin-right: 20px;
+}
+
+button[id="incomebutton"] :hover {
+  color: green;
+  background-color: black;
+}
+
+button[id="expensebutton"] {
+  border: 1px solid lightblue;
+  background-color: red;
+  border: 1px solid red;
+  color: black;
 }
 
 .mydetails {
