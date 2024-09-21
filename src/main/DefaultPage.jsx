@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 
 const DefaultPage = () => {
@@ -11,6 +12,9 @@ const DefaultPage = () => {
                 If you're new here, please register to get started.<br />
                 Already have an account? Log in to continue.
             </p>
+            {/* <br/>
+            <br/>
+            <Button id="defaultpagebutton">Let's Get Started</Button> */}
         </div>
     )
 }

@@ -92,7 +92,7 @@ const AllIncomes = ({ appstate, dispatch }) => {
                 if (response.status === 200) {
                     // console.log(JSON.stringify(response.data))
                     alert("Income Deleted Successfully");
-                    getIncomes();
+                    getIncomes(appstate, dispatch);
                 } else {
                     // console.log(response)
                     alert("Something Wrong")
@@ -128,6 +128,9 @@ const AllIncomes = ({ appstate, dispatch }) => {
                                 <div className="totalincome">
                                     <h2 id="total">Total Income : {appstate?.incomes?.totalAmount}</h2>
                                     {/* <h2 id="balance">Total Balance: 56655565</h2> */}
+                                    <div>
+                                        <Button onClick={() => goToAddIncome()} id="addIncomeButton">Add Income</Button>
+                                    </div>
                                 </div>
                                 <div className="table-div" >
                                     <table>

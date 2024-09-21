@@ -119,7 +119,7 @@ const DashBoard = ({ appstate, dispatch }) => {
     // console.log("aggregatedData of expenses " + JSON.stringify(monthlyExpenses));
     // console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
 
-    useMemo(() => {
+    useEffect(() => {
         if (Object.keys(appstate.expenses).length == 0) {
             getExpenses(appstate, dispatch);
         }
@@ -246,9 +246,15 @@ const DashBoard = ({ appstate, dispatch }) => {
                 (expenses?.length > 0 || incomes?.length > 0) ?
                     (
                         <div>
-                            <h3>
+                            <h2>
                                 Hi {appstate.expenses.userName}
-                            </h3>
+                                <div className='dashboardButtons'>
+                                    <Button onClick={() => goToAddExpense()} id="addExpenseButton">Add Expense</Button>{"   "}
+                                    <Button onClick={() => goToAddIncome()} id="addIncomeButton">Add Income</Button>
+                                </div>
+                            </h2>
+
+
                             <div className='showamount' >
                                 <h4 id="expense" >
                                     Total Expense : ₹{totaExpense?.toFixed(2)}
@@ -297,7 +303,7 @@ const DashBoard = ({ appstate, dispatch }) => {
                                     </BarChart>
                                 }
                                 {
-                                     monthlyExpenses.length > 0 && monthlyIncomes.length > 0 && <BarChart
+                                    monthlyExpenses.length > 0 && monthlyIncomes.length > 0 && <BarChart
                                         width={400}
                                         height={300}
                                         data={combinedData}

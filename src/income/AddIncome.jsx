@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { callPost } from "../api/Api";
 import { setLoading, setProcess, setUserId } from "../store/AppActions";
 import P from '../store/ProcessConstants';
+import { Button } from "@mui/material";
 
 
 const AddIncome = ({ appstate, dispatch }) => {
@@ -62,8 +63,8 @@ const AddIncome = ({ appstate, dispatch }) => {
                 setDate("");
                 setCategory("");
                 setDescription("");
-                dispatch(setProcess(P.DASH_BOARD))
-                // dispatch(setProcess(P.ALL_INCOMES))
+                // dispatch(setProcess(P.DASH_BOARD))
+                dispatch(setProcess(P.ALL_INCOMES))
             } else {
                 alert("Bad Request")
                 // console.log(response)
@@ -76,6 +77,11 @@ const AddIncome = ({ appstate, dispatch }) => {
             return error
         }
     }
+
+    const handleBack = () => {
+        dispatch(setProcess(P.ALL_INCOMES))
+    }
+
     return (
         <div className="addincome-form">
             <form onSubmit={(e) => handleAddIncome(e)}>
@@ -129,7 +135,8 @@ const AddIncome = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <button type="submit">Add Income</button>
+                    <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                    <Button id="addIncomeButton" type="submit">Add Income</Button>
                 </div>
             </form>
         </div>

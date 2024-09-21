@@ -3,6 +3,7 @@ import { callPost, callPut } from "../api/Api";
 import { setLoading, setProcess, setUserId } from "../store/AppActions";
 import P from '../store/ProcessConstants';
 import { transFormDate } from "../common/CommonFunctions";
+import { Button } from "@mui/material";
 
 
 const EditExpense = ({ appstate, dispatch }) => {
@@ -75,6 +76,11 @@ const EditExpense = ({ appstate, dispatch }) => {
             return error
         }
     }
+
+    const handleBack = () => {
+        dispatch(setProcess(P.ALL_EXPENSES))
+    }
+
     return (
         <div className="addexpense-form">
             <form onSubmit={(e) => handleEditExpense(e)}>
@@ -129,7 +135,8 @@ const EditExpense = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <button type="submit">EDIT Expense</button>
+                    <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                    <Button id="addExpenseButton" type="submit">Edit Expense</Button>
                 </div>
             </form>
         </div>

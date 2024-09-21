@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { callPost } from "../api/Api";
 import { setLoading, setProcess, setUserId } from "../store/AppActions";
 import P from '../store/ProcessConstants';
+import { Button } from "@mui/material";
 
 
 const AddExpense = ({ appstate, dispatch }) => {
@@ -62,8 +63,8 @@ const AddExpense = ({ appstate, dispatch }) => {
                 setDate("");
                 setCategory("");
                 setDescription("");
-                // dispatch(setProcess(P.ALL_EXPENSES))
-                dispatch(setProcess(P.DASH_BOARD))
+                dispatch(setProcess(P.ALL_EXPENSES))
+                // dispatch(setProcess(P.DASH_BOARD))
             } else {
                 alert("Please Logout and Login again to continue")
                 // console.log(response)
@@ -76,6 +77,11 @@ const AddExpense = ({ appstate, dispatch }) => {
             return error
         }
     }
+
+    const handleBack = () => {
+        dispatch(setProcess(P.ALL_EXPENSES))
+    }
+
     return (
         <div className="addexpense-form">
             <form onSubmit={(e) => handleAddExpense(e)}>
@@ -129,7 +135,8 @@ const AddExpense = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <button type="submit">Add Expense</button>
+                    <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                    <Button id="addExpenseButton" type="submit">Add Expense</Button>
                 </div>
             </form>
         </div>

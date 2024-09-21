@@ -3,6 +3,7 @@ import { callPost, callPut } from "../api/Api";
 import { setLoading, setProcess, setUserId } from "../store/AppActions";
 import P from '../store/ProcessConstants';
 import { transFormDate } from "../common/CommonFunctions";
+import { Button } from "@mui/material";
 
 
 const EditIncome = ({ appstate, dispatch }) => {
@@ -75,6 +76,11 @@ const EditIncome = ({ appstate, dispatch }) => {
             return error
         }
     }
+
+    const handleBack = () => {
+        dispatch(setProcess(P.ALL_INCOMES))
+    }
+
     return (
         <div className="addincome-form">
             <form onSubmit={(e) => handleEditIncome(e)}>
@@ -129,7 +135,8 @@ const EditIncome = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <button type="submit">EDIT Income</button>
+                <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                <Button id="addIncomeButton" type="submit">Edit Income</Button>
                 </div>
             </form>
         </div>

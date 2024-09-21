@@ -36,7 +36,7 @@ const AllExpenses = ({ appstate, dispatch }) => {
     const indexOfFirstExpense = indexOfLastExpense - expensePerPage;
 
 
-    let expensesList = appstate?.expenses?.expenses.reverse();
+    let expensesList = appstate?.expenses?.expenses;
 
 
 
@@ -68,15 +68,15 @@ const AllExpenses = ({ appstate, dispatch }) => {
 
     const handleEditExpense = async (e, i, expense) => {
 
-        // let expenses = appstate?.expenses?.expenses.reverse();
+        let expenses = appstate?.expenses?.expenses;
         e.preventDefault();
         let newExpense = {
-            ...expensesList[i],
+            ...expenses[i],
             date: transFormDate(expense.date)
         }
         console.log("selected expense : ", JSON.stringify(newExpense))
         await dispatch(setSelectedExpense(newExpense));
-        await dispatch(setProcess(P.EDIT_EXPENSE))
+        dispatch(setProcess(P.EDIT_EXPENSE))
 
 
     }
@@ -131,6 +131,9 @@ const AllExpenses = ({ appstate, dispatch }) => {
                                     <h2 id="total">Total Expense : {appstate?.expenses?.totalAmount}</h2>
                                     {/* <h2 id="income">Total Income : {appstate?.incomes?.totalAmount}</h2>
                                     <h2 id="balance">Total Balance: {appstate?.incomes?.totalAmount - appstate?.expenses?.totalAmount}</h2> */}
+                                    <div>
+                                    <Button onClick={() => goToAddExpense()} id="addExpenseButton">Add Expense</Button>
+                                    </div>
                                 </div>
                                 <div className="table-div" >
                                     <table>
