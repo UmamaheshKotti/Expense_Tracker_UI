@@ -135,7 +135,7 @@ const AddExpense = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                    <Button id="backButton" onClick={() => handleBack()} >All Expenses</Button>
                     <Button id="addExpenseButton" type="submit">Add Expense</Button>
                 </div>
             </form>

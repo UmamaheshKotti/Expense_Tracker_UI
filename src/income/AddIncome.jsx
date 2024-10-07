@@ -135,7 +135,7 @@ const AddIncome = ({ appstate, dispatch }) => {
                         value={description} />
                 </div>
                 <div>
-                    <Button id="backButton" onClick={() => handleBack()} > Back</Button>
+                    <Button id="backButton" onClick={() => handleBack()} >All Incomes</Button>
                     <Button id="addIncomeButton" type="submit">Add Income</Button>
                 </div>
             </form>
