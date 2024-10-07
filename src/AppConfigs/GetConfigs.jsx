@@ -13,28 +13,28 @@ const GetConfigs = ({ appstate, dispatch }) => {
 
     const getEndPoints = async () => {
 
-        const url = `${process.env.REACT_APP_BACKEND_URL}/endpoints/get-configs`;
-        // console.log(url)
+        // const url = `${process.env.REACT_APP_BACKEND_URL}/endpoints/get-configs`;
+        // // console.log(url)
 
-        try {
-            setLoading(true);
-            const response = await callGet(url)
-            if (response.status === 200) {
+        // try {
+        //     setLoading(true);
+        //     const response = await callGet(url)
+        //     if (response.status === 200) {
                 // console.log(JSON.stringify(response.data));
-                dispatch(setAppConfigs(response.data));
-                if(token) {
+                // dispatch(setAppConfigs(response.data));
+                if(token && appstate.appConfigs ) {
                     dispatch(setProcess(P.DASH_BOARD));
                 } else {
                     dispatch(setProcess(P.DEFAULT_PAGE))
                 }
-            } else{
-                return alert("Please Refresh the page")
-            }
-            setLoading(false);
-        } catch (error) {
-            // console.log("Error while calling Configs : " , error);
-            return
-        }
+        //     } else{
+        //         return alert("Please Refresh the page")
+        //     }
+        //     setLoading(false);
+        // } catch (error) {
+        //     // console.log("Error while calling Configs : " , error);
+        //     return
+        // }
     }
 
 
@@ -44,7 +44,7 @@ const GetConfigs = ({ appstate, dispatch }) => {
 
     return (
         <div>
-            <Dialog
+            {/* <Dialog
                 open={loading}
                 // onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
@@ -61,7 +61,7 @@ const GetConfigs = ({ appstate, dispatch }) => {
                 <DialogTitle id="alert-dialog-title">
                     Please Wait...
                 </DialogTitle>
-            </Dialog>
+            </Dialog> */}
         </div>
     )
 }

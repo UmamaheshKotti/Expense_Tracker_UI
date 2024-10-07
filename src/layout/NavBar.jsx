@@ -1,9 +1,10 @@
 import React from "react";
 import '../App.css';
 import { resetState, setProcess } from "../store/AppActions";
-import P from '../store/ProcessConstants'
+import P from '../store/ProcessConstants';
+import { getEndPoints } from '../main/DefaultPage'
 
-const NavBar = ({ dispatch, token, navigate }) => {
+const NavBar = ({appstate, dispatch, token, navigate }) => {
 
     const goToLoginPage = () => {
         dispatch(setProcess(P.USER_LOGIN));

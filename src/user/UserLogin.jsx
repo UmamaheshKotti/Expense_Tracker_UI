@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { callPost } from "../api/Api";
 import { setLoading, setProcess, setUserToken } from "../store/AppActions";
 import P from '../store/ProcessConstants';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from "react-router-dom";
+import { getEndPoints } from "../main/DefaultPage";
+import { Button } from "@mui/material";
 
 
 const UserLogin = ({ appstate, dispatch }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        if(Object.keys(appstate.appConfigs).length === 0) {
+            getEndPoints(undefined, true, dispatch)
+        }
+    },[])
 
     const handleEmail = (e) => {
         e.preventDefault();
@@ -90,9 +98,9 @@ const UserLogin = ({ appstate, dispatch }) => {
                         value={password} onChange={(e) => handlePassword(e)}
                         placeholder="Enter your password" />
                 </div>
-                <div>
-                    <button className="loginbutton" type="submit">Login</button>
-                    <Link className="forgotpassword" onClick={(e) => goToForgotPassword(e)} >Forgot Password?</Link>
+                <div >
+                    <Button className="forgotpassword" type="submit">Login</Button>
+                    <Link onClick={(e) => goToForgotPassword(e)} >Forgot Password?</Link>
                 </div><br/>
             </form>
         </div>

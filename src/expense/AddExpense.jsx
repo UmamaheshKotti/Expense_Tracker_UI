@@ -102,7 +102,7 @@ const AddExpense = ({ appstate, dispatch }) => {
                         type="Number"
                         placeholder="Enter the Amount"
                         onChange={(e) => handleAmount(e)}
-                        value={amount} /><br />
+                         /><br />
                     <label id="date">Date</label>
                     <input
                         name="date"

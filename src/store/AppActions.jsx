@@ -50,6 +50,11 @@ export const setUserDetails = (data) => ({
     payload: data
 })
 
+export const setSelectedLi = (data) => ({
+    type: C.SET_SELECTED_LI,
+    payload: data
+})
+
 export const resetState = () => ({
     type: C.RESET_STATE
 })

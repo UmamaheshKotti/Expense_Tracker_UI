@@ -1,5 +1,5 @@
 
-// import P from './ProcessConstants';
+import P from './ProcessConstants';
 import C from './AppConstants';
 
 const intitialState = {
@@ -12,7 +12,8 @@ const intitialState = {
     incomes: {},
     selectedExpense: {},
     selectedIncome: {},
-    userDetails: {}
+    userDetails: {},
+    selectedLi: C.DASHBOARD_LI
 }
 
 
@@ -67,6 +68,11 @@ const appstate = (state = intitialState, action = {}) => {
             return {
                 ...state,
                 userDetails: action.payload
+            }
+        case C.SET_SELECTED_LI:
+            return {
+                ...state,
+                selectedLi: action.payload
             }
         case C.RESET_STATE:
             return intitialState

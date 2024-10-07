@@ -7,8 +7,10 @@ import { Button, Tooltip } from '@mui/material';
 import { getUserDetails } from '../user/UserDetails';
 import P from '../store/ProcessConstants'
 import { setProcess } from '../store/AppActions';
+import { getEndPoints } from '../main/DefaultPage';
 
 const DashBoard = ({ appstate, dispatch }) => {
+    let appConfigs = appstate?.appConfigs;
     let expenses = appstate?.expenses?.expenses;
     let incomes = appstate?.incomes?.incomes;
     let userDetails = appstate.userDetails;
@@ -120,16 +122,21 @@ const DashBoard = ({ appstate, dispatch }) => {
     // console.log("aggregatedData of incomes " + JSON.stringify(monthlyIncomes));
 
     useEffect(() => {
-        if (Object.keys(appstate.expenses).length == 0) {
+        if (Object.keys(appstate.appConfigs).length === 0) {
+            getEndPoints(undefined, undefined, dispatch)
+        }
+        if (Object.keys(appstate.expenses).length == 0 && Object.keys(appstate.appConfigs).length != 0) {
             getExpenses(appstate, dispatch);
         }
-        if (Object.keys(appstate.incomes).length == 0) {
+        if (Object.keys(appstate.incomes).length == 0 && Object.keys(appstate.appConfigs).length != 0) {
             getIncomes(appstate, dispatch);
         }
-        getUserDetails(appstate, dispatch)
+        if (Object.keys(appstate.userDetails).length === 0 && Object.keys(appstate.appConfigs).length != 0) {
+            getUserDetails(appstate, dispatch)
+        }
         formatedIncomeData();
         formatedExpenseData();
-    }, [expenses, incomes]);
+    }, [appConfigs, expenses, incomes]);
 
     const combineIncomesAndExpenses = () => {
         let extractIncomes = [];

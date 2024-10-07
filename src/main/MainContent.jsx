@@ -30,7 +30,7 @@ const MainContent = ({ token }) => {
             )
         case P.DEFAULT_PAGE:
             return (
-                UIComponent = <DefaultPage />
+                UIComponent = <DefaultPage appstate={appstate} dispatch={dispatch} />
             )
         case P.USER_LOGIN:
             return (

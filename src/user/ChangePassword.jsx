@@ -3,6 +3,7 @@ import { callPost } from "../api/Api";
 import GridLoader from "react-spinners/GridLoader";
 import { setLoading, setProcess } from "../store/AppActions";
 import P from '../store/ProcessConstants'
+import { Button } from "@mui/material";
 
 const ChangePassword = ({ appstate, dispatch }) => {
 
@@ -90,7 +91,8 @@ const ChangePassword = ({ appstate, dispatch }) => {
                             placeholder="Enter the password again" />
                     </div>
                     <div>
-                        <button type="submit">Change</button>
+                        <Button type="submit">Change</Button>
+                        <Button onClick={() => dispatch(setProcess(P.USER_LOGIN))} >Login</Button>
                     </div><br/>
                 </form>
             </div>

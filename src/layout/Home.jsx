@@ -15,20 +15,20 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
     const appstate = useSelector((state) => state.appstate);
     const dispatch = useDispatch();
-    const appConfigs = require("../AppConfigs/AppEndPoints.json");
+    // const appConfigs = require("../AppConfigs/AppEndPoints.json");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    useEffect(() => {
-        dispatch(setAppConfigs(appConfigs))
-    }, [])
+    // useEffect(() => {
+    //     dispatch(setAppConfigs(appConfigs))
+    // }, [])
 
     // const handleClose = () => {
     //     dispatch(setLoading(false))
     // }
     return (
         <>
-            <NavBar dispatch={dispatch} token={token} navigate={navigate} />
+            <NavBar appstate={appstate} dispatch={dispatch} token={token} navigate={navigate} />
             <div className='app-sidebar-maincontent'>
                 <SideBar appstate={appstate} dispatch={dispatch} token={token} />
                 <div className="maincontent" >

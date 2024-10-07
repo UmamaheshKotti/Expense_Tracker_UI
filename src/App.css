@@ -101,7 +101,7 @@ h4 {
 .sidebar {
   background-color: #606673;
   border: solid 1px rgb(237, 137, 137);
-  min-width: 15%;
+  min-width: 12%;
   min-height: 84.7vh;
   color: white;
   padding-top: 10px;
@@ -110,12 +110,33 @@ h4 {
 .sidebar ul {
   list-style: none;
   width: 8rem;
+  margin-left: -2rem;
 }
 
 .sidebar li {
   font-size: larger;
   cursor: pointer;
   margin-bottom: 10%;
+}
+
+.dash-li{
+  border-bottom: dashed;
+}
+.expense-li{
+  border-bottom: dashed;
+}
+.allexpenses-li{
+  border-bottom: dashed;
+}
+.income-li{
+  border-bottom: dashed;
+}
+.allincomes-li{
+  border-bottom: dashed;
+}
+.mydetails-li{
+  margin-top: 22rem;
+  border-bottom: dashed;
 }
 
 /* maincontent */
@@ -147,10 +168,15 @@ h4 {
 
 .login-form button {
   padding: 3px 15px 3px 15px;
-  background-color: rgb(116, 166, 149);
+  background-color: rgb(36, 93, 74);
   color: beige;
   margin-top: 10px;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+.login-form button:hover {
+  background-color: rgb(116, 166, 149);
 }
 
 .userauth {
@@ -173,9 +199,7 @@ h4 {
   font-weight: 700;
 }
 
-.loginbutton {
-  margin-right: 10px;
-}
+
 
 
 /* registeration */
@@ -198,10 +222,16 @@ h4 {
 
 .register-form button {
   padding: 3px 15px 3px 15px;
-  background-color: rgb(116, 166, 149);
+  background-color: rgb(16, 44, 36);
   color: rgb(247, 247, 242);
-  margin-top: 10px;
+  /* margin-top: 10px; */
   cursor: pointer;
+  margin-right: 20px;
+}
+
+.register-form button:hover {
+  background-color: rgb(116, 166, 149);
+
 }
 
 

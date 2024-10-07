@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { callPost } from "../api/Api";
 import GridLoader from "react-spinners/GridLoader";
 import { setLoading, setProcess } from "../store/AppActions";
 import P from '../store/ProcessConstants'
+import { getEndPoints } from "../main/DefaultPage";
+import { Button } from "@mui/material";
 
 const UserRegistration = ({ appstate, dispatch }) => {
 
@@ -10,6 +12,12 @@ const UserRegistration = ({ appstate, dispatch }) => {
     const [email, setEmail] = useState(String);
     const [password, setPassword] = useState(String);
     const [confirmPassword, setConfirmPassword] = useState(String);
+
+    useEffect(() => {
+        if(Object.keys(appstate.appConfigs).length === 0) {
+            getEndPoints(true, undefined, dispatch)
+        }
+    },[])
 
 
     const handleUsername = (e) => {
@@ -101,9 +109,10 @@ const UserRegistration = ({ appstate, dispatch }) => {
                             value={confirmPassword}
                             onChange={(e) => handleConfirmPassword(e)}
                             placeholder="Enter the password again" />
-                    </div>
+                    </div><br/>
                     <div>
-                        <button type="submit">Register</button>
+                        <Button type="submit">Register</Button>
+                        <Button onClick={() => dispatch(setProcess(P.USER_LOGIN))} >Login</Button>
                     </div>
                 </form>
             </div>

@@ -127,7 +127,6 @@ const EditIncome = ({ appstate, dispatch }) => {
                     </select><br />
                     <label id="description">Description</label><br />
                     <textarea
-                        required
                         id="description"
                         type="text"
                         placeholder="Detailed Description"
